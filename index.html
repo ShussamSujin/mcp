@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP 연결 주소 모음</title>
+<meta name="description" content="주소 한 줄만 복사하면 내 AI에 패들렛, 캔바, 노션을 연결할 수 있어요. 선생님을 위한 MCP 연결 안내.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* 분위기: 잎이 우거진 안락의자처럼 쉬어 가는 초록, 덩굴로 이어지는 연결. 레이아웃: 한 줄로 읽히는 세로 흐름. 설명 → 3단계 → 주소 모음(검색·복사) → AI별 방법 → 안전 수칙 */
+  color-scheme: light;
+  --paper:#F6F5EC;
+  --ink:#26331F;
+  --ink-soft:#5B6A52;
+  --line:#DCE3CE;
+  --sky:#E1EDD9;
+  --lilac:#E8EFD8;
+  --apricot:#F2E9D2;
+  --mint:#CFE6CB;
+  --accent:#3F7A3A;
+  --accent-ink:#FFFFFF;
+  --ok:#1E7B5A;
+  --ok-bg:#DDF5EA;
+  --warn:#9A5A00;
+  --warn-bg:#FFEFD2;
+  --key:#3D5F6B;
+  --key-bg:#DCEAEC;
+  --card:#FFFFFF;
+  --display:"Gowun Batang","Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:1.3;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--accent)}
+button{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+.lead{color:var(--ink-soft);max-width:38em}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(26px,4vw,34px)}
+
+/* 상단 */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:20px;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--accent)}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{text-decoration:none;color:var(--ink-soft);padding:6px 12px;border-radius:999px;font-size:15px}
+.top nav a:hover{background:var(--lilac);color:var(--ink)}
+
+/* 히어로 */
+.hero{background:linear-gradient(160deg,var(--sky) 0%,var(--lilac) 55%,var(--apricot) 100%);border-radius:28px;padding:44px 32px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+.hero h1{font-size:clamp(32px,5.4vw,52px)}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-top:14px;color:var(--ink)}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 22px;background:var(--accent);color:var(--accent-ink);text-decoration:none;cursor:pointer;font-family:var(--body);font-size:17px}
+.btn.ghost{background:var(--card);color:var(--ink)}
+.btn:hover{filter:brightness(1.06)}
+.hero svg{width:100%;height:auto;display:block}
+.shushu{display:block;width:154px;height:auto;margin:0 0 10px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.family{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center}
+.family a{color:var(--ink-soft)}
+
+/* 쉬운 설명 */
+.explain{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.explain > div{border-radius:var(--r);padding:22px}
+.explain h3{font-size:21px;margin-bottom:8px}
+.e1{background:var(--apricot)} .e2{background:var(--mint)} .e3{background:var(--sky)}
+
+/* 3단계 */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 22px 74px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:20px;top:20px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-size:22px;display:grid;place-items:center}
+.steps h3{font-size:20px;margin-bottom:4px}
+.steps p{color:var(--ink-soft);font-size:16px}
+
+/* 주소 모음 */
+.tools{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.search{display:flex;align-items:center;gap:10px;background:var(--card);border:2px solid var(--line);border-radius:999px;padding:10px 18px}
+.search:focus-within{border-color:var(--accent)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-family:inherit;font-size:17px;color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;cursor:pointer;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.count{color:var(--ink-soft);font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.star{border-color:var(--accent);box-shadow:0 6px 0 var(--lilac)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card h3{font-size:21px}
+.tag{font-size:13px;color:var(--ink-soft)}
+.pill{flex:none;font-size:13px;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.pill.login{background:var(--ok-bg);color:var(--ok)}
+.pill.open{background:var(--mint);color:var(--ok)}
+.pill.key{background:var(--key-bg);color:var(--key)}
+.pill.setup{background:var(--warn-bg);color:var(--warn)}
+.desc{color:var(--ink-soft);font-size:15.5px;line-height:1.6;flex:1}
+.url{font-family:var(--mono);font-size:13.5px;background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:8px 10px;overflow-x:auto;white-space:nowrap}
+.card-btns{display:flex;gap:8px}
+.copy{flex:1;border:0;border-radius:12px;padding:10px 12px;background:var(--accent);color:var(--accent-ink);cursor:pointer;font-family:var(--body);font-size:16px}
+.copy.sub{flex:none;background:var(--lilac);color:var(--ink)}
+.copy.done{background:var(--ok);color:#fff}
+.note{font-size:13.5px;color:var(--warn);background:var(--warn-bg);border-radius:10px;padding:6px 10px;line-height:1.5}
+.src{font-size:12.5px;color:var(--ink-soft)}
+.empty{grid-column:1/-1;text-align:center;color:var(--ink-soft);padding:32px 0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft);margin-top:18px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* AI별 방법 */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:1px solid var(--line);background:var(--card);border-radius:14px 14px 4px 4px;padding:10px 18px;cursor:pointer;font-family:var(--display);font-size:18px}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+.panel[hidden]{display:none}
+.panel ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.panel b{font-weight:400;background:var(--lilac);border-radius:6px;padding:1px 6px}
+.cond{background:var(--paper);border-radius:14px;padding:16px;font-size:15.5px;align-self:start}
+.cond h4{margin:0 0 6px;font-family:var(--display);font-weight:400;font-size:17px}
+.cond ul{margin:0;padding-left:18px;color:var(--ink-soft);display:flex;flex-direction:column;gap:4px}
+pre{margin:10px 0 0;background:#26331F;color:#EEF3E4;border-radius:12px;padding:14px;font-family:var(--mono);font-size:13px;line-height:1.55;overflow-x:auto}
+
+/* 말해 보세요 */
+.says{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.say{border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px}
+.say:nth-child(4n+1){background:var(--sky)} .say:nth-child(4n+2){background:var(--mint)}
+.say:nth-child(4n+3){background:var(--apricot)} .say:nth-child(4n+4){background:var(--lilac)}
+.sel{display:block;width:100%;margin-top:6px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-family:inherit;font-size:16px;color:var(--ink)}
+.say .who{font-size:14px;color:var(--ink-soft)}
+.say q{quotes:none;font-size:18px;line-height:1.6}
+.say button{align-self:flex-start;border:0;background:var(--card);border-radius:999px;padding:6px 14px;cursor:pointer;font-size:14.5px}
+
+/* 안전 */
+.safe{background:var(--card);border:2px solid var(--apricot);border-radius:var(--r);padding:26px}
+.safe ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.safe strong{font-weight:400;color:var(--accent)}
+
+footer{padding:36px 0 48px;color:var(--ink-soft);font-size:14.5px;border-top:1px solid var(--line);margin-top:24px}
+footer .wrap{display:flex;flex-direction:column;gap:6px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 20px;border-radius:999px;font-size:15px;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.show{opacity:1}
+
+@media (max-width:800px){
+  .hero{grid-template-columns:1fr;padding:32px 22px}
+  .explain,.steps,.says{grid-template-columns:1fr}
+  .panel{grid-template-columns:1fr;padding:20px}
+  section{padding:40px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#toast{transition:none}.shushu{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="#top" id="top" style="display:inline-flex;align-items:center;gap:8px"><img src="shushu.png" alt="" width="30" height="33">mcp<span>.shu.is</span></a>
+  <nav aria-label="바로 가기">
+    <a href="#what">MCP가 뭐예요?</a>
+    <a href="#list">주소 모음</a>
+    <a href="#how">AI별 연결 방법</a>
+    <a href="#safe">안전하게 쓰기</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div>
+      <img class="shushu" src="shushu.png" alt="마스코트 슈슈" width="154" height="170">
+      <h1>잠깐 쉬어 가세요.<br><em>연결은 AI가</em> 할게요!!</h1>
+      <p class="lead">복사하고 붙여넣느라 바빴던 손을 쉬게 해 주세요. 주소 한 줄이면 패들렛, 캔바, 노션이 내 AI에 이어져요. 이 연결 방법이 MCP예요.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#list">주소 복사하러 가기</a>
+        <a class="btn ghost" href="#how">내 AI에 붙이는 방법</a>
+      </div>
+    </div>
+    <svg viewBox="0 0 420 300" role="img" aria-label="가운데 AI에서 뻗은 덩굴이 패들렛, 캔바, 노션, 드라이브로 이어지는 그림">
+      <g stroke="#3F7A3A" stroke-width="3.5" stroke-linecap="round" fill="none">
+        <path d="M210 150 C160 140 150 84 92 66"/>
+        <path d="M210 150 C262 138 272 84 328 66"/>
+        <path d="M210 150 C158 164 150 216 92 236"/>
+        <path d="M210 150 C262 164 270 216 328 236"/>
+      </g>
+      <g><ellipse cx="150" cy="104" rx="13" ry="6" fill="#7DB36F" transform="rotate(-40 150 104)"/><ellipse cx="128" cy="78" rx="13" ry="6" fill="#A9CF98" transform="rotate(20 128 78)"/><ellipse cx="172" cy="128" rx="13" ry="6" fill="#5E9A57" transform="rotate(-70 172 128)"/><ellipse cx="270" cy="104" rx="13" ry="6" fill="#7DB36F" transform="rotate(40 270 104)"/><ellipse cx="292" cy="78" rx="13" ry="6" fill="#A9CF98" transform="rotate(-20 292 78)"/><ellipse cx="248" cy="128" rx="13" ry="6" fill="#5E9A57" transform="rotate(70 248 128)"/><ellipse cx="150" cy="198" rx="13" ry="6" fill="#A9CF98" transform="rotate(40 150 198)"/><ellipse cx="128" cy="222" rx="13" ry="6" fill="#7DB36F" transform="rotate(-20 128 222)"/><ellipse cx="172" cy="174" rx="13" ry="6" fill="#5E9A57" transform="rotate(70 172 174)"/><ellipse cx="270" cy="198" rx="13" ry="6" fill="#A9CF98" transform="rotate(-40 270 198)"/><ellipse cx="292" cy="222" rx="13" ry="6" fill="#7DB36F" transform="rotate(20 292 222)"/><ellipse cx="248" cy="174" rx="13" ry="6" fill="#5E9A57" transform="rotate(-70 248 174)"/></g>
+      <circle cx="210" cy="150" r="56" fill="#3F7A3A"/>
+      <circle cx="210" cy="150" r="64" fill="none" stroke="#3F7A3A" stroke-opacity=".25" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
+      <text x="210" y="147" text-anchor="middle" font-family="Gowun Batang, serif" font-weight="700" font-size="27" fill="#fff">내 AI</text>
+      <text x="210" y="171" text-anchor="middle" font-family="Gowun Dodum, sans-serif" font-size="12" fill="#DCEBD3">Gemini · Claude · ChatGPT</text>
+      <g font-family="Gowun Dodum, sans-serif" font-size="18" text-anchor="middle" fill="#26331F">
+        <rect x="26" y="38" width="116" height="50" rx="25" fill="#FFFFFF"/><text x="84" y="69">패들렛</text>
+        <rect x="278" y="38" width="116" height="50" rx="25" fill="#FFFFFF"/><text x="336" y="69">캔바</text>
+        <rect x="26" y="212" width="116" height="50" rx="25" fill="#FFFFFF"/><text x="84" y="243">노션</text>
+        <rect x="278" y="212" width="116" height="50" rx="25" fill="#FFFFFF"/><text x="336" y="243">드라이브</text>
+      </g>
+    </svg>
+  </div>
+
+  <section id="what">
+    <div class="sec-head">
+      <h2>MCP가 뭐예요?</h2>
+      <p class="lead">MCP는 AI와 앱을 이어 주는 약속이에요. 충전기를 USB-C 하나로 통일한 것처럼, AI와 앱을 잇는 구멍을 하나로 맞춘 거예요.</p>
+    </div>
+    <div class="explain">
+      <div class="e1">
+        <h3>예전에는</h3>
+        <p>패들렛 내용을 복사해서 AI에 붙여넣고, AI가 써 준 글을 다시 복사해서 캔바에 붙여넣었어요.</p>
+      </div>
+      <div class="e2">
+        <h3>연결하면</h3>
+        <p>AI가 패들렛을 직접 읽고, 캔바에 직접 만들어요. 선생님은 말로 부탁만 하면 돼요.</p>
+      </div>
+      <div class="e3">
+        <h3>어떤 AI든 똑같이</h3>
+        <p>같은 주소를 Gemini에도, Claude에도, ChatGPT에도 그대로 쓸 수 있어요. 그래서 주소만 알면 돼요!!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps">
+    <div class="sec-head">
+      <h2>딱 3단계면 돼요</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>주소 복사</h3><p>아래 주소 모음에서 쓰고 싶은 앱의 복사 버튼을 눌러요.</p></li>
+      <li><h3>내 AI에 붙여넣기</h3><p>AI의 설정에서 "연결된 앱"(커넥터) 메뉴를 열고, 복사한 주소를 붙여넣어요.</p></li>
+      <li><h3>로그인하고 허용</h3><p>그 앱의 내 계정으로 로그인하면 연결 끝. 이제 말로 시켜 보세요.</p></li>
+    </ol>
+  </section>
+
+  <section id="list">
+    <div class="sec-head">
+      <h2>MCP 서버 주소 모음</h2>
+      <p class="lead">선생님들이 많이 쓰는 앱을 맨 위에 두었어요. 복사 버튼을 누르면 주소가 복사돼요.</p>
+    </div>
+    <div class="tools">
+      <label class="search" for="q">
+        <span aria-hidden="true">찾기</span>
+        <input id="q" type="search" placeholder="앱 이름으로 찾아보세요 (예: 패들렛, 캔바, 드라이브)" autocomplete="off">
+      </label>
+      <div class="chips" id="chips" role="group" aria-label="분류"></div>
+      <div class="count" id="count" aria-live="polite"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="legend" aria-label="표시 설명">
+      <span><i class="pill login">로그인</i> 내 계정으로 로그인만 하면 돼요</span>
+      <span><i class="pill open">바로 사용</i> 로그인 없이 써요</span>
+      <span><i class="pill key">키 필요</i> 그 서비스에서 받은 나만의 비밀 코드(키)가 있어야 해요</span>
+      <span><i class="pill setup">준비 필요</i> 주소만으로는 안 되고 먼저 신청과 준비가 필요해요</span>
+    </div>
+    <p class="src" style="margin-top:14px">주소는 2026년 11월 24일에 모았어요. "공식 안내에서 확인" 표시가 없는 주소는 인터넷에 공개된 목록에서 가져왔어요. 연결하기 전에 그 서비스의 공식 안내에서 한 번 더 확인해 주세요.</p>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <h2>내 AI에는 어떻게 붙여요?</h2>
+      <p class="lead">버튼 위치만 조금씩 달라요. 쓰는 AI를 골라 보세요.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="AI 선택">
+      <button class="tab" role="tab" id="t-gemini" aria-controls="p-gemini" aria-selected="true">Gemini</button>
+      <button class="tab" role="tab" id="t-claude" aria-controls="p-claude" aria-selected="false" tabindex="-1">Claude</button>
+      <button class="tab" role="tab" id="t-chatgpt" aria-controls="p-chatgpt" aria-selected="false" tabindex="-1">ChatGPT</button>
+      <button class="tab" role="tab" id="t-anti" aria-controls="p-anti" aria-selected="false" tabindex="-1">Antigravity</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-gemini" aria-labelledby="t-gemini">
+      <ol>
+        <li>컴퓨터에서 <b>gemini.google.com</b>에 들어가요.</li>
+        <li><b>설정</b> → <b>개인 인텔리전스</b> → <b>연결된 앱</b>을 눌러요.</li>
+        <li><b>커넥터</b> 탭에서 오른쪽 위 <b>+ 맞춤</b> 버튼을 눌러요.</li>
+        <li>주소 칸(<b>MCP 서버 URL</b>)에 복사한 주소를 붙여넣고 <b>다음</b>을 눌러요.</li>
+        <li>안내에 따라 그 앱에 로그인하고 허용해요.</li>
+        <li>채팅에서 <b>@</b>를 입력하면 연결한 앱을 골라 쓸 수 있어요.</li>
+      </ol>
+      <div class="cond">
+        <h4>먼저 확인해요</h4>
+        <ul>
+          <li>개인 구글 계정에서만 돼요. 학교·직장 계정은 아직 지원하지 않아요.</li>
+          <li>Gemini 활동 기록이 켜져 있어야 해요.</li>
+          <li>연결은 컴퓨터에서 하고, 연결한 뒤에는 휴대전화에서도 쓸 수 있어요.</li>
+          <li>구글 도움말은 미국·영어 기준으로 안내해요. 내 화면에 "맞춤" 버튼이 보이면 쓸 수 있어요.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude" hidden>
+      <ol>
+        <li><b>claude.ai</b>에서 <b>맞춤설정</b> → <b>커넥터</b>로 들어가요.</li>
+        <li><b>추가</b> → <b>맞춤 커넥터 추가</b>를 눌러요.</li>
+        <li>이름을 적고, 주소 칸(<b>원격 MCP 서버 URL</b>)에 복사한 주소를 붙여넣어요.</li>
+        <li><b>계속</b> → <b>추가</b>를 누르고, 그 앱에 로그인해요.</li>
+      </ol>
+      <div class="cond">
+        <h4>먼저 확인해요</h4>
+        <ul>
+          <li>무료 요금제도 맞춤 커넥터를 1개 쓸 수 있어요.</li>
+          <li>패들렛, 캔바, 노션은 커넥터 목록에 이미 있어요. 주소 없이 "연결"만 눌러도 돼요.</li>
+          <li>학교나 회사에서 단체로 쓰는 Claude는 관리자가 먼저 추가해 줘야 해요.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-chatgpt" aria-labelledby="t-chatgpt" hidden>
+      <ol>
+        <li><b>설정</b> → <b>앱</b>으로 들어가요.</li>
+        <li><b>고급 설정</b>에서 <b>개발자 모드</b>를 켜요.</li>
+        <li><b>앱 만들기</b>를 누르고, 복사한 주소를 붙여넣어요.</li>
+        <li>로그인 방식을 고르고 만들기를 눌러요. 새 채팅에서 그 앱을 골라 써요.</li>
+      </ol>
+      <div class="cond">
+        <h4>먼저 확인해요</h4>
+        <ul>
+          <li>요금제에 따라 달라요. "개발자 모드"가 안 보이면 지금 요금제로는 쓸 수 없어요.</li>
+          <li>학교나 회사에서 단체로 쓰는 ChatGPT는 관리자가 먼저 켜 줘야 해요.</li>
+          <li>패들렛, 캔바는 앱 목록에 이미 있어요. 주소 없이 연결할 수 있어요.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-anti" aria-labelledby="t-anti" hidden>
+      <ol>
+        <li>에이전트 패널 위쪽 <b>…</b> → <b>MCP Servers</b>를 눌러요.</li>
+        <li>목록에 있는 앱은 <b>Install</b>(설치)만 누르면 끝이에요.</li>
+        <li>목록에 없는 앱이면 <b>Manage MCP Servers</b> → <b>View raw config</b>를 눌러요. 설정 파일이 열려요.</li>
+        <li>열린 파일(<b>mcp_config.json</b>)에 "이대로 복사"로 복사한 글을 붙여넣고 저장해요.</li>
+        <li><b>설정</b> → <b>맞춤설정</b>에서 새로고침하면 연결돼요.</li>
+      </ol>
+      <div class="cond">
+        <h4>붙여넣을 글 만들기</h4>
+        <label for="anti-app" style="font-size:15px;color:var(--ink-soft)">연결할 앱을 골라요</label>
+        <select id="anti-app" class="sel"></select>
+        <pre id="anti-snippet"></pre>
+        <button class="copy" type="button" id="anti-copy" style="margin-top:10px;width:100%">이대로 복사</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="say">
+    <div class="sec-head">
+      <h2>연결했다면 이렇게 말해 보세요</h2>
+      <p class="lead">그대로 복사해서 써 보고, 우리 반에 맞게 바꿔 보세요.</p>
+    </div>
+    <div class="says" id="says"></div>
+  </section>
+
+  <section id="safe">
+    <div class="sec-head">
+      <h2>안전하게 쓰기</h2>
+    </div>
+    <div class="safe">
+      <ul>
+        <li><strong>공식 주소만 연결해요.</strong> 주소의 도메인이 그 서비스의 진짜 도메인인지 확인해요. (예: padlet.com, canva.com)</li>
+        <li><strong>학생 개인정보는 넣지 않아요.</strong> 이름, 학번, 성적, 상담 내용이 담긴 자료는 연결한 AI에게 맡기지 않아요.</li>
+        <li><strong>AI가 "실행할까요?"라고 물으면 내용을 읽고 눌러요.</strong> 글을 쓰거나 지우는 작업은 되돌리기 어려울 수 있어요.</li>
+        <li><strong>학교 계정은 관리자 정책을 따라요.</strong> 안 보이는 메뉴는 막혀 있는 거예요. 개인 계정으로 연습해 보세요.</li>
+        <li><strong>안 쓰는 연결은 꺼요.</strong> 연결된 앱 메뉴에서 언제든 연결 해제할 수 있어요.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="family"><span>SHU 패밀리</span>
+      <a href="https://shu.is">SHU 단축주소</a>
+      <a href="https://blacknwhite.shu.is">SHU 블랙&amp;화이트</a>
+      <a href="https://adminsimulator.shu.is">관리콘솔 시뮬레이터</a>
+      <a href="https://shulution.shu.is">SHUlution</a>
+      <a href="https://mailshu.shu.is">MailSHU</a>
+    </div>
+    <div>© 2026 Google Certified Trainer &amp; Innovator Sujin Lee · 문의: gajungssamzzang@gmail.com</div>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// a: login(로그인) | open(바로 사용) | key(키 필요) | setup(사전 설정)
+// v: 공식 문서에서 확인한 주소
+const SERVERS = [
+  {n:"패들렛", en:"Padlet", c:"수업·협업", u:"https://mcp.padlet.com", a:"login", v:1, star:1,
+   d:"패들렛을 만들고, 게시물과 댓글을 읽고 써요. 학생 의견 정리에 좋아요."},
+  {n:"캔바", en:"Canva", c:"디자인·영상", u:"https://mcp.canva.com/mcp", a:"login", v:1, star:1,
+   d:"내 디자인을 찾고, 새로 만들고, 내보내요. 포스터·발표 자료 초안에 좋아요."},
+  {n:"노션", en:"Notion", c:"문서·업무", u:"https://mcp.notion.com/mcp", a:"login", v:1, star:1,
+   d:"페이지와 데이터베이스를 검색하고 새 글을 써요. 회의록·수업 기록 정리에 좋아요."},
+  {n:"깃허브", en:"GitHub", c:"개발·배포", u:"https://api.githubcopilot.com/mcp", a:"login", star:1, d:"저장소, 이슈, 코드를 다뤄요."},
+  {n:"버셀", en:"Vercel", c:"개발·배포", u:"https://mcp.vercel.com/", a:"login", star:1, d:"프로젝트와 배포 기록을 관리해요."},
+  {n:"넷리파이", en:"Netlify", c:"개발·배포", u:"https://netlify-mcp.netlify.app/mcp", a:"login", d:"만든 사이트를 배포하고 관리해요."},
+  {n:"수파베이스", en:"Supabase", c:"개발·배포", u:"https://mcp.supabase.com/mcp", a:"login", d:"데이터베이스를 만들고 조회해요."},
+  {n:"구글 클래스룸", en:"Google Classroom", c:"구글", u:"https://classroommcp.googleapis.com/mcp/v1", a:"setup", v:1, star:1,
+   d:"수업, 과제, 공지, 루브릭을 다뤄요.",
+   note:"구글이 만든 공식 주소가 있어요. 다만 아직 시험 운영 중이라, 구글에 개발자로 따로 신청하고 준비를 마쳐야 해요. 주소만 붙여서는 연결되지 않아요."},
+  {n:"구글 드라이브", en:"Google Drive", c:"구글", u:"https://drivemcp.googleapis.com/mcp/v1", a:"setup", v:1, d:"드라이브 파일을 찾고 읽어요.", gws:1},
+  {n:"구글 문서", en:"Google Docs", c:"구글", u:"https://docsmcp.googleapis.com/mcp/v1", a:"setup", v:1, d:"문서를 읽고 만들고 고쳐요.", gws:1},
+  {n:"구글 스프레드시트", en:"Google Sheets", c:"구글", u:"https://sheetsmcp.googleapis.com/mcp/v1", a:"setup", v:1, d:"시트의 값을 읽고 채워요.", gws:1},
+  {n:"구글 슬라이드", en:"Google Slides", c:"구글", u:"https://slidesmcp.googleapis.com/mcp/v1", a:"setup", v:1, d:"슬라이드를 읽고 만들어요.", gws:1},
+  {n:"구글 캘린더", en:"Google Calendar", c:"구글", u:"https://calendarmcp.googleapis.com/mcp/v1", a:"setup", v:1, d:"일정을 확인하고 추가해요.", gws:1},
+  {n:"지메일", en:"Gmail", c:"구글", u:"https://gmailmcp.googleapis.com/mcp/v1", a:"setup", v:1, d:"메일을 찾고 초안을 써요.", gws:1},
+  {n:"구글 채팅", en:"Google Chat", c:"구글", u:"https://chatmcp.googleapis.com/mcp/v1", a:"setup", v:1, d:"채팅 스페이스의 메시지를 다뤄요.", gws:1},
+  {n:"구글 지도", en:"Google Maps", c:"구글", u:"https://mapstools.googleapis.com/mcp", a:"key", d:"장소와 경로 정보를 찾아요. 체험학습 동선 짤 때 좋아요."},
+
+  {n:"재피어", en:"Zapier", c:"문서·업무", u:"https://mcp.zapier.com/api/mcp/mcp", a:"key", d:"수천 개 앱을 한꺼번에 이어 주는 자동화 도구예요. 전용 주소를 재피어에서 받아 써요."},
+  {n:"에어테이블", en:"Airtable", c:"문서·업무", u:"https://mcp.airtable.com/mcp", a:"login", d:"표 형태의 데이터베이스를 읽고 써요."},
+  {n:"아사나", en:"Asana", c:"문서·업무", u:"https://mcp.asana.com/sse", a:"login", d:"할 일과 프로젝트를 관리해요."},
+  {n:"먼데이닷컴", en:"monday.com", c:"문서·업무", u:"https://mcp.monday.com/sse", a:"login", d:"업무 보드를 읽고 고쳐요."},
+  {n:"리니어", en:"Linear", c:"문서·업무", u:"https://mcp.linear.app/sse", a:"login", d:"이슈와 작업을 관리해요."},
+  {n:"아틀라시안", en:"Atlassian Jira Confluence", c:"문서·업무", u:"https://mcp.atlassian.com/v1/sse", a:"login", d:"지라와 컨플루언스를 검색하고 써요."},
+  {n:"박스", en:"Box", c:"문서·업무", u:"https://mcp.box.com", a:"login", d:"박스에 올린 파일을 찾고 읽어요."},
+  {n:"파이어플라이즈", en:"Fireflies", c:"문서·업무", u:"https://api.fireflies.ai/mcp", a:"login", d:"회의 녹음과 회의록을 찾아요."},
+  {n:"허브스팟", en:"HubSpot", c:"문서·업무", u:"https://app.hubspot.com/mcp/v1/http", a:"key", d:"고객 관리 데이터를 다뤄요."},
+  {n:"인터콤", en:"Intercom", c:"문서·업무", u:"https://mcp.intercom.com/sse", a:"login", d:"고객 문의 내용을 찾아요."},
+  {n:"쇼트아이오", en:"Short.io", c:"문서·업무", u:"https://ai-assistant.short.io/mcp", a:"key", d:"짧은 주소를 만들고 관리해요."},
+  {n:"인디드", en:"Indeed", c:"문서·업무", u:"https://mcp.indeed.com/claude/mcp", a:"login", d:"채용 공고를 찾아요. 진로 수업 자료로 쓸 수 있어요."},
+
+  {n:"인비디오", en:"invideo", c:"디자인·영상", u:"https://mcp.invideo.io/sse", a:"login", d:"글로 영상을 만들어요."},
+  {n:"클라우디너리", en:"Cloudinary", c:"디자인·영상", u:"https://asset-management.mcp.cloudinary.com/sse", a:"login", d:"이미지와 영상 파일을 관리해요."},
+  {n:"윅스", en:"Wix", c:"디자인·영상", u:"https://mcp.wix.com/sse", a:"login", d:"윅스 사이트를 만들고 고쳐요."},
+  {n:"웹플로", en:"Webflow", c:"디자인·영상", u:"https://mcp.webflow.com/sse", a:"login", d:"웹플로 사이트를 관리해요."},
+
+  {n:"울프럼", en:"Wolfram", c:"검색·지식", u:"https://agenttools.wolfram.com/mcp", a:"open", d:"수학 계산과 과학 지식을 정확하게 찾아요."},
+  {n:"엑사 검색", en:"Exa Search", c:"검색·지식", u:"https://mcp.exa.ai/mcp", a:"open", d:"AI에 맞춘 웹 검색을 해요."},
+  {n:"딥위키", en:"DeepWiki", c:"검색·지식", u:"https://mcp.deepwiki.com/sse", a:"open", d:"깃허브 저장소를 설명서처럼 읽어 줘요."},
+  {n:"허깅페이스", en:"Hugging Face", c:"검색·지식", u:"https://hf.co/mcp", a:"open", d:"AI 모델과 데이터셋 정보를 찾아요."},
+  {n:"스택 오버플로", en:"Stack Overflow", c:"검색·지식", u:"https://mcp.stackoverflow.com", a:"login", d:"코딩 질문과 답변을 찾아요."},
+  {n:"AWS 지식", en:"AWS Knowledge", c:"검색·지식", u:"https://knowledge-mcp.global.api.aws", a:"open", d:"AWS 공식 문서를 찾아요."},
+  {n:"클라우드플레어 문서", en:"Cloudflare Docs", c:"검색·지식", u:"https://docs.mcp.cloudflare.com/sse", a:"open", d:"클라우드플레어 공식 문서를 찾아요."},
+  {n:"아스트로 문서", en:"Astro Docs", c:"검색·지식", u:"https://mcp.docs.astro.build/mcp", a:"open", d:"아스트로 공식 문서를 찾아요."},
+  {n:"에이피파이", en:"Apify", c:"검색·지식", u:"https://mcp.apify.com", a:"key", d:"웹 페이지에서 자료를 모아요."},
+
+  {n:"네온", en:"Neon", c:"개발·배포", u:"https://mcp.neon.tech/mcp", a:"login", d:"포스트그레스 데이터베이스를 다뤄요."},
+  {n:"센트리", en:"Sentry", c:"개발·배포", u:"https://mcp.sentry.dev/sse", a:"login", d:"앱 오류 기록을 확인해요."},
+  {n:"클라우드플레어 워커스", en:"Cloudflare Workers", c:"개발·배포", u:"https://bindings.mcp.cloudflare.com/sse", a:"login", d:"워커스 앱을 만들고 관리해요."},
+
+  {n:"스트라이프", en:"Stripe", c:"결제", u:"https://mcp.stripe.com/", a:"login", d:"결제 내역을 조회해요."},
+  {n:"페이팔", en:"PayPal", c:"결제", u:"https://mcp.paypal.com/sse", a:"login", d:"결제와 청구서를 다뤄요."},
+  {n:"스퀘어", en:"Square", c:"결제", u:"https://mcp.squareup.com/sse", a:"login", d:"매장 결제 데이터를 다뤄요."}
+];
+
+const GWS_NOTE = "구글이 만든 공식 주소예요. 아직 시험 운영 중이라, 구글에 개발자로 따로 신청하고 준비를 마쳐야 쓸 수 있어요.";
+const AUTH = {login:"로그인", open:"바로 사용", key:"키 필요", setup:"준비 필요"};
+
+const PROMPTS = [
+  {who:"패들렛을 연결했다면", t:"우리 반 '식생활 실천' 패들렛 게시물을 읽고, 자주 나온 의견 세 가지로 정리해 줘."},
+  {who:"캔바를 연결했다면", t:"학부모 연수 안내 포스터를 캔바로 만들어 줘. 파스텔 톤으로, 날짜와 장소가 잘 보이게."},
+  {who:"노션을 연결했다면", t:"노션에서 2학년 수련회 회의록을 찾아서 아직 안 끝난 할 일만 뽑아 줘."},
+  {who:"패들렛과 캔바를 둘 다 연결했다면", t:"패들렛에 모인 모둠별 작품 설명을 모아서 캔바 발표 자료 초안으로 만들어 줘."}
+];
+
+const grid = document.getElementById("grid");
+const chipsEl = document.getElementById("chips");
+const countEl = document.getElementById("count");
+const qEl = document.getElementById("q");
+const toast = document.getElementById("toast");
+let cat = "전체";
+let toastTimer;
+
+function esc(s){return String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
+}
+
+function fallbackCopy(text){
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.setAttribute("readonly","");
+  ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch(e){ ok = false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+
+async function copyText(text, btn, doneLabel){
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; }
+  catch(e){ ok = fallbackCopy(text); }
+  if(ok){
+    showToast("복사했어요!! 내 AI에 붙여넣어 보세요");
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = doneLabel || "복사 완료";
+      btn.classList.add("done");
+      setTimeout(() => { btn.textContent = old; btn.classList.remove("done"); }, 1600);
+    }
+  } else {
+    showToast("복사가 막혀 있어요. 주소를 길게 눌러 직접 복사해 주세요");
+  }
+}
+
+function jsonFor(s){
+  const key = s.en.toLowerCase().split(" ").slice(0,2).join("-").replace(/[^a-z0-9-]/g,"");
+  return JSON.stringify({mcpServers:{[key]:{serverUrl:s.u}}}, null, 2);
+}
+
+function renderChips(){
+  const cats = ["전체", ...new Set(SERVERS.map(s => s.c))];
+  chipsEl.innerHTML = cats.map(c =>
+    `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${c===cat}">${esc(c)}</button>`).join("");
+}
+
+function render(){
+  const q = qEl.value.trim().toLowerCase();
+  const list = SERVERS.filter(s =>
+    (cat === "전체" || s.c === cat) &&
+    (!q || (s.n + " " + s.en + " " + s.c + " " + s.d + " " + s.u).toLowerCase().includes(q)));
+  countEl.textContent = `주소 ${list.length}개` + (list.length !== SERVERS.length ? ` (전체 ${SERVERS.length}개)` : "");
+  if(!list.length){
+    grid.innerHTML = `<p class="empty">찾는 앱이 없어요. 다른 이름으로 찾아보세요.</p>`;
+    return;
+  }
+  grid.innerHTML = list.map(s => {
+    const i = SERVERS.indexOf(s);
+    const note = s.note || (s.gws ? GWS_NOTE : "");
+    return `<article class="card${s.star ? " star" : ""}">
+      <div class="card-top">
+        <div><h3>${esc(s.n)}</h3><div class="tag">${esc(s.en)} · ${esc(s.c)}</div></div>
+        <span class="pill ${s.a}">${AUTH[s.a]}</span>
+      </div>
+      <p class="desc">${esc(s.d)}</p>
+      ${note ? `<p class="note">${esc(note)}</p>` : ""}
+      <div class="url" tabindex="0" aria-label="${esc(s.n)} 주소">${esc(s.u)}</div>
+      <div class="card-btns">
+        <button class="copy" type="button" data-i="${i}" data-kind="url">주소 복사</button>
+      </div>
+      <div class="src">${s.v ? "공식 안내에서 확인" : "연결 전에 공식 안내 확인"}</div>
+    </article>`;
+  }).join("");
+}
+
+chipsEl.addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if(!b) return;
+  cat = b.dataset.cat; renderChips(); render();
+});
+qEl.addEventListener("input", render);
+grid.addEventListener("click", e => {
+  const b = e.target.closest(".copy"); if(!b) return;
+  const s = SERVERS[Number(b.dataset.i)];
+  copyText(s.u, b, "복사 완료");
+});
+
+// 말해 보세요
+const saysEl = document.getElementById("says");
+saysEl.innerHTML = PROMPTS.map((p, i) =>
+  `<div class="say"><span class="who">${esc(p.who)}</span><q>${esc(p.t)}</q>
+   <button type="button" data-p="${i}">문장 복사</button></div>`).join("");
+saysEl.addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  copyText(PROMPTS[Number(b.dataset.p)].t, b, "복사 완료");
+});
+
+// 탭
+const tabs = [...document.querySelectorAll(".tab")];
+function selectTab(t){
+  tabs.forEach(x => {
+    const on = x === t;
+    x.setAttribute("aria-selected", on);
+    x.tabIndex = on ? 0 : -1;
+    document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+  });
+}
+tabs.forEach((t, i) => {
+  t.addEventListener("click", () => selectTab(t));
+  t.addEventListener("keydown", e => {
+    if(e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+    selectTab(n); n.focus();
+  });
+});
+
+// Antigravity: 앱을 고르면 붙여넣을 글이 바뀌어요
+const antiSel = document.getElementById("anti-app");
+const antiPre = document.getElementById("anti-snippet");
+antiSel.innerHTML = SERVERS.map((x, i) => `<option value="${i}">${esc(x.n)}</option>`).join("");
+function antiUpdate(){ antiPre.textContent = jsonFor(SERVERS[Number(antiSel.value)]); }
+antiSel.addEventListener("change", antiUpdate);
+document.getElementById("anti-copy").addEventListener("click", e => copyText(antiPre.textContent, e.currentTarget, "복사 완료"));
+antiUpdate();
+
+renderChips();
+render();
+</script>
+</body>
+</html>
